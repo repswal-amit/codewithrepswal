@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin Panel | code with repswal</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/codewithrepswal.png" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/admin.css" />
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">&lt;codewithrepswal&gt; <span class="admin-badge">Admin</span></a>
+      <button class="close-sidebar" id="closeSidebar">&times;</button>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="#" class="nav-link active" data-target="dashboard">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="9" />
+            <rect x="14" y="3" width="7" height="5" />
+            <rect x="14" y="12" width="7" height="9" />
+            <rect x="3" y="16" width="7" height="5" />
+          </svg>
+          Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link" data-target="messages">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          Messages
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link" data-target="projects">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+          Projects
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link" data-target="skills">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+            <polyline points="2 17 12 22 22 17" />
+            <polyline points="2 12 12 17 22 12" />
+          </svg>
+          Skills
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link" data-target="settings">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+          Settings
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="index.html" class="nav-link back-to-site">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+            <polyline points="10 17 15 12 10 7" />
+            <line x1="15" y1="12" x2="3" y2="12" />
+          </svg>
+          Back to Site
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <h2 class="page-title" id="pageTitle">Dashboard</h2>
+      </div>
+      <div class="topbar-right">
+        <div class="admin-profile">
+          <div class="avatar">A</div>
+          <span>Admin User</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sections Container -->
+    <div class="content-container">
+
+      <!-- DASHBOARD SECTION -->
+      <section class="admin-section active" id="dashboard-section">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </div>
+            <div class="stat-details">
+              <h3>Profile Views</h3>
+              <p class="stat-number">1,245</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div class="stat-details">
+              <h3>Messages</h3>
+              <p class="stat-number">24</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
+            <div class="stat-details">
+              <h3>Projects</h3>
+              <p class="stat-number">6</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-bottom: 30px;">
+          <div class="panel-header">
+            <h3>Broadcast Notification</h3>
+          </div>
+          <div class="settings-content">
+            <form id="broadcastForm" class="admin-form">
+              <div class="form-group" style="margin-bottom: 15px;">
+                <label for="broadcastMessage">Message Content</label>
+                <input type="text" id="broadcastMessage" class="form-control"
+                  placeholder="e.g. New project just launched! Check it out." required>
+              </div>
+              <button type="submit" class="btn btn-primary" id="sendBroadcastBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+                Send Broadcast
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Recent Messages</h3>
+            <button class="btn btn-sm btn-outline"
+              onclick="document.querySelector('[data-target=\'messages\']').click()">View All</button>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Subject</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recentMessagesBody">
+                <!-- Mock data loaded via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- MESSAGES SECTION -->
+      <section class="admin-section" id="messages-section">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>All Messages</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Subject</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="allMessagesBody">
+                <!-- Mock data loaded via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS SECTION -->
+      <section class="admin-section" id="projects-section">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Manage Projects</h3>
+            <button class="btn btn-primary" id="addProjectBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Add Project
+            </button>
+          </div>
+          <div class="projects-admin-grid" id="projectsAdminGrid">
+            <!-- Mock projects loaded via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS SECTION -->
+      <section class="admin-section" id="skills-section">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Manage Skills</h3>
+            <button class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Add Skill
+            </button>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Skill Name</th>
+                  <th>Proficiency</th>
+                  <th>Category</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="skillsBody">
+                <!-- Mock skills loaded via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS SECTION -->
+      <section class="admin-section" id="settings-section">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Profile Settings</h3>
+          </div>
+          <div class="settings-content">
+            <form class="admin-form" id="settingsForm">
+
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="adminName">Full Name</label>
+                  <input type="text" id="adminName" class="form-control" value="code with repswal">
+                </div>
+                <div class="form-group">
+                  <label for="adminEmail">Contact Email</label>
+                  <input type="email" id="adminEmail" class="form-control" value="bcastudents0055@gmail.com">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="adminBio">About Me (Bio)</label>
+                <textarea id="adminBio" class="form-control"
+                  rows="4">Namaste! 🙏 Main ek passionate code with repswal hoon jo web aur app development mein specialization kar raha hoon.</textarea>
+              </div>
+
+              <h4 class="settings-subheading">Social Links</h4>
+
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="adminInsta">Instagram URL</label>
+                  <input type="url" id="adminInsta" class="form-control"
+                    value="https://www.instagram.com/codewithrepswal">
+                </div>
+                <div class="form-group">
+                  <label for="adminWa">WhatsApp URL</label>
+                  <input type="url" id="adminWa" class="form-control" value="https://wa.me/8769454846">
+                </div>
+              </div>
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="adminTg">Telegram URL</label>
+                  <input type="url" id="adminTg" class="form-control" value="https://t.me/computer_science_students_A">
+                </div>
+                <div class="form-group">
+                  <label for="adminGithub">GitHub URL</label>
+                  <input type="url" id="adminGithub" class="form-control" placeholder="https://github.com/yourusername">
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="saveSettingsBtn">Save Changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Add Project Modal -->
+  <div id="projectModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="projectModalTitle">Add New Project</h3>
+        <button class="close-modal" id="closeProjectModal">&times;</button>
+      </div>
+      <form id="addProjectForm" class="admin-form">
+        <div class="form-group">
+          <label>Project Title</label>
+          <input type="text" id="projTitle" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Category (e.g., Web, Mobile, Other)</label>
+          <input type="text" id="projCategory" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Tags (comma separated, e.g., HTML, CSS, JS)</label>
+          <input type="text" id="projTags" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Image URL (Optional)</label>
+          <input type="url" id="projImage" class="form-control" placeholder="https://example.com/image.png">
+        </div>
+        <div class="form-group">
+          <label>Project Link (Optional)</label>
+          <input type="url" id="projLink" class="form-control" placeholder="https://example.com">
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Save Project</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Skill Modal -->
+  <div id="skillModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add New Skill</h3>
+        <button class="close-modal" id="closeSkillModal">&times;</button>
+      </div>
+      <form id="addSkillForm" class="admin-form">
+        <div class="form-group">
+          <label>Skill Name</label>
+          <input type="text" id="skillName" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Proficiency Percentage (0-100)</label>
+          <input type="number" id="skillPct" class="form-control" min="0" max="100" required>
+        </div>
+        <div class="form-group">
+          <label>Category (e.g., Frontend, Backend, Database)</label>
+          <input type="text" id="skillCat" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Save Skill</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/firebase-init.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="code with repswal — App Developer, Web Developer & Tech Community Builder. Building dreams, crushing bugs. Join 2700+ code with repswal community." />
+  <meta name="keywords"
+    content="code with repswal, Web Developer, App Developer, Portfolio, BCA, Programming, Coding" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://codewithrepswal.com/" />
+  <meta property="og:title" content="code with repswal | Web & App Developer Portfolio" />
+  <meta property="og:description" content="Code ka magician ✨ | Building dreams, crushing bugs 🚀" />
+  <meta property="og:image" content="https://codewithrepswal.com/assets/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://codewithrepswal.com/" />
+  <meta property="twitter:title" content="code with repswal | Web & App Developer Portfolio" />
+  <meta property="twitter:description" content="Code ka magician ✨ | Building dreams, crushing bugs 🚀" />
+  <meta property="twitter:image" content="https://codewithrepswal.com/assets/og-image.jpg" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://codewithrepswal.com/" />
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "code with repswal",
+    "url": "https://codewithrepswal.com/",
+    "jobTitle": "Web & App Developer",
+    "sameAs": [
+      "https://www.instagram.com/codewithrepswal",
+      "https://t.me/computer_science_s"
+    ]
+  }
+  </script>
+
+  <title>code with repswal | Web & App Developer Portfolio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/codewithrepswal.png" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════ CANVAS BACKGROUND ═══ -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- ═══════════════════════════════════════ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">&lt;codewithrepswal&gt;</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#community" class="nav-link">Community</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════ HERO ═══ -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-left reveal">
+        <div class="hero-greeting">
+          <span class="wave">👋</span>
+          <span>Hello, World!</span>
+        </div>
+        <h1 class="hero-name" id="heroName">CODE WITH <span class="gradient-text">REPSWAl</span></h1>
+        <div class="hero-role">
+          <span class="static-text">I'm a </span>
+          <span class="typed-text" id="typedText"></span>
+          <span class="cursor-blink">|</span>
+        </div>
+        <p class="hero-desc">
+          Code ka magician ✨ | Building dreams, crushing bugs 🚀<br>
+          Passionate about creating stunning apps & web experiences.
+        </p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary" id="viewWorkBtn">View My Work 🚀</a>
+          <a href="#contact" class="btn btn-outline" id="connectBtn">Let's Connect 💬</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://www.instagram.com/codewithrepswal" target="_blank" rel="noopener noreferrer"
+            class="social-icon" id="instaIcon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" id="githubIcon" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+          </a>
+          <a href="https://wa.me/8769454846" class="social-icon" id="whatsappIcon" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+          </a>
+          <a href="https://t.me/computer_science_s" class="social-icon" id="telegramIcon" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-right reveal">
+        <div class="code-card">
+          <div class="code-header">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="code-title">developer.js</span>
+          </div>
+          <div class="code-body">
+            <pre><code><span class="kw">const</span> <span class="var">developer</span> = {
+  <span class="key">name</span>: <span class="str">"code with repswal"</span>,
+  <span class="key">role</span>: <span class="str">"Full Stack Dev"</span>,
+  <span class="key">skills</span>: [
+    <span class="str">"HTML"</span>, <span class="str">"CSS"</span>, <span class="str">"JS"</span>,
+    <span class="str">"React"</span>, <span class="str">"Node"</span>,
+    <span class="str">"Android"</span>, <span class="str">"MySQL"</span>
+  ],
+  <span class="key">passion</span>: <span class="str">"Building Dreams 🚀"</span>,
+  <span class="key">community</span>: <span class="num">2710</span> + <span class="str">" followers"</span>,
+  <span class="fn">greet</span>() {
+    <span class="kw">return</span> <span class="str">"Hello, World! 👋"</span>;
+  }
+};
+</code></pre>
+          </div>
+        </div>
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ ABOUT ═══ -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">About Me</span>
+        <h2 class="section-title">Who Am <span class="gradient-text">I?</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <div class="about-img-ring">
+            <div class="about-avatar">
+              <span>Repswal</span>
+            </div>
+          </div>
+          <div class="about-badge">
+            <span>🚀</span>
+            <span>Available for Projects</span>
+          </div>
+        </div>
+        <div class="about-content reveal">
+          <h3 id="aboutSubtitle">code with repswal & <span class="gradient-text">Developer</span></h3>
+          <p id="aboutBioText">
+            Namaste! 🙏 Main ek passionate code with repswal hoon jo web aur app development mein specialization kar
+            raha
+            hoon.
+            Mera mantra hai — <em>"Code karo, seekho, aur doosron ke saath share karo!"</em>
+          </p>
+          <div class="stats-grid">
+            <div class="stat-card" id="stat1">
+              <span class="stat-num" data-target="2710">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Instagram Followers</span>
+            </div>
+            <div class="stat-card" id="stat2">
+              <span class="stat-num" data-target="15">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Projects Built</span>
+            </div>
+            <div class="stat-card" id="stat3">
+              <span class="stat-num" data-target="500">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Community Members</span>
+            </div>
+            <div class="stat-card" id="stat4">
+              <span class="stat-num" data-target="2">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Years Coding</span>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary" id="hireBtn">Hire Me 💼</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ SKILLS ═══ -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">My Arsenal</span>
+        <h2 class="section-title">Skills & <span class="gradient-text">Technologies</span></h2>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Tech Badges -->
+        <div class="tech-badges reveal">
+          <h3>Technologies I Work With</h3>
+          <div class="badges-wrap">
+            <span class="badge" id="b-html">HTML5</span>
+            <span class="badge" id="b-css">CSS3</span>
+            <span class="badge" id="b-js">JavaScript</span>
+            <span class="badge" id="b-react">React.js</span>
+            <span class="badge" id="b-node">Node.js</span>
+            <span class="badge" id="b-php">PHP</span>
+            <span class="badge" id="b-python">Python</span>
+            <span class="badge" id="b-java">Java</span>
+            <span class="badge" id="b-android">Android Dev</span>
+            <span class="badge" id="b-mysql">MySQL</span>
+            <span class="badge" id="b-firebase">Firebase</span>
+            <span class="badge" id="b-git">Git & GitHub</span>
+            <span class="badge" id="b-figma">Figma</span>
+            <span class="badge" id="b-vscode">VS Code</span>
+          </div>
+        </div>
+
+        <!-- Progress Bars -->
+        <div class="skill-bars reveal">
+          <h3>Skill Proficiency</h3>
+          <div id="skillBarsContainer">
+            <p style="color: var(--text-muted);">Loading skills...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ PROJECTS ═══ -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">My Work</span>
+        <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs reveal">
+        <button class="filter-btn active" data-filter="all" id="filterAll">All</button>
+        <button class="filter-btn" data-filter="web" id="filterWeb">Web 🌐</button>
+        <button class="filter-btn" data-filter="mobile" id="filterMobile">Mobile 📱</button>
+        <button class="filter-btn" data-filter="other" id="filterOther">Other 🤖</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+        <p style="color: var(--text-muted); text-align: center; grid-column: 1/-1;">Loading projects...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ COMMUNITY ═══ -->
+  <section class="community section" id="community">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">My Community</span>
+        <h2 class="section-title">Join Our <span class="gradient-text">Tech Family</span> 🚀</h2>
+        <p class="section-sub">2,710+ code with repswal already connected — sikho, seekho, aur grow karo saath mein!</p>
+      </div>
+
+      <div class="community-grid">
+        <div class="community-card instagram-card reveal" id="instaCard">
+          <div class="community-icon">📸</div>
+          <h3>Instagram</h3>
+          <p>Daily coding tips, C output questions, BCA notes aur much more! Follow karo aur coding community ka hissa
+            bano.</p>
+          <div class="community-stat">2,710+ Followers</div>
+          <a href="https://www.instagram.com/codewithrepswal" target="_blank" rel="noopener noreferrer"
+            class="btn btn-instagram" id="instaFollowBtn">Follow on Instagram ❤️</a>
+        </div>
+
+        <div class="community-card whatsapp-card reveal" id="waCard">
+          <div class="community-icon">💬</div>
+          <h3>WhatsApp Group</h3>
+          <p>code with repswal ka active WhatsApp group — doubt clearing, notes sharing aur exam preparation saath mein!
+          </p>
+          <div class="community-stat">Active Community</div>
+          <a href="https://chat.whatsapp.com/Ckrwtak2RmW0kSS14rAnaI?mode=gi_t" target="_blank" rel="noopener noreferrer"
+            class="btn btn-whatsapp" id="waJoinBtn">Join WhatsApp Group 💬</a>
+        </div>
+
+        <div class="community-card telegram-card reveal" id="tgCard">
+          <div class="community-icon">✈️</div>
+          <h3>Telegram Channel</h3>
+          <p>BCA-MCA resources, free courses, project ideas aur coding challenges — sab kuch ek jagah par Telegram pe!
+          </p>
+          <div class="community-stat">Growing Fast!</div>
+          <a href="https://t.me/computer_science_students_A" target="_blank" rel="noopener noreferrer"
+            class="btn btn-telegram" id="tgJoinBtn">Join Telegram ✈️</a>
+        </div>
+      </div>
+
+      <!-- Marquee Strip -->
+      <div class="marquee-wrap reveal">
+        <div class="marquee-track">
+          <span>🚀 code with repswal</span>
+          <span>💻 Web Development</span>
+          <span>📱 App Development</span>
+          <span>🐍 Python</span>
+          <span>☕ Java</span>
+          <span>⚛️ React.js</span>
+          <span>🛢️ MySQL</span>
+          <span>🔥 Firebase</span>
+          <span>🤖 DSA</span>
+          <span>📚 BCA Notes</span>
+          <span>🚀 code with repswal</span>
+          <span>💻 Web Development</span>
+          <span>📱 App Development</span>
+          <span>🐍 Python</span>
+          <span>☕ Java</span>
+          <span>⚛️ React.js</span>
+          <span>🛢️ MySQL</span>
+          <span>🔥 Firebase</span>
+          <span>🤖 DSA</span>
+          <span>📚 BCA Notes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ CONTACT ═══ -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's Build Something <span class="gradient-text">Together</span> 🤝</h2>
+        <p class="section-sub">Koi project idea hai? Collaboration chahiye? Feel free to reach out!</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="contact-card" id="contactInsta">
+            <div class="contact-icon">📸</div>
+            <div>
+              <h4>Instagram DM</h4>
+              <p>@codewithrepswal</p>
+            </div>
+          </div>
+          <div class="contact-card" id="contactEmailCard">
+            <div class="contact-icon">📧</div>
+            <div>
+              <h4>Email</h4>
+              <p>bcastudents0055@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-card" id="contactLocation">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4>Location</h4>
+              <p>India 🇮🇳</p>
+            </div>
+          </div>
+          <div class="contact-availability">
+            <span class="pulse-dot"></span>
+            <span>Available for Freelance & Collaborations</span>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-group">
+            <label for="contactName">Your Name</label>
+            <input type="text" id="contactName" name="name" placeholder="Aapka naam..." required />
+          </div>
+          <div class="form-group">
+            <label for="contactEmailInput">Email Address</label>
+            <input type="email" id="contactEmailInput" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" name="subject" placeholder="Project collaboration?" />
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" rows="5" placeholder="Apna project/idea describe karein..."
+              required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary full-width" id="sendMsgBtn">Send Message 🚀</button>
+          <div class="form-success" id="formSuccess">
+            ✅ Message sent! Main jald hi reply karunga. 🙏
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="nav-logo">&lt;codewithrepswal/&gt;</span>
+          <p>Code ka magician ✨ | Building dreams, crushing bugs 🚀</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/codewithrepswal" target="_blank" rel="noopener noreferrer"
+              aria-label="Instagram" class="social-icon" id="footerInsta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a href="#" aria-label="GitHub" class="social-icon" id="footerGithub">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#projects">Web Development</a></li>
+            <li><a href="#projects">App Development</a></li>
+            <li><a href="#projects">UI/UX Design</a></li>
+            <li><a href="#projects">Database Design</a></li>
+            <li><a href="#community">BCA Mentoring</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 <strong>code with repswal</strong> | Built with ❤️ & Code in India 🇮🇳</p>
+        <p class="footer-handle">@codewithrepswal</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <!-- Site-wide Toast Container -->
+  <div id="siteToastContainer" class="toast-container"
+    style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px;">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="js/firebase-init.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
