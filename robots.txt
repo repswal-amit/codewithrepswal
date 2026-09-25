@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /login.html
+
+Sitemap: https://codewithrepswal.onrender.com/sitemap.xml
