@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 212, 255, ${this.opacity})`;
+      ctx.fillStyle = `rgba(99, 102, 241, ${this.opacity})`;
       ctx.fill();
     }
   }
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 150) {
           const opacity = (1 - dist / 150) * 0.12;
-          ctx.strokeStyle = `rgba(0, 212, 255, ${opacity})`;
+          ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
           ctx.lineWidth = 0.5;
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
@@ -113,12 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
      2. TYPING EFFECT
      ───────────────────────────────────────── */
   const roles = [
-    'Web Developer 💻',
-    'App Developer 📱',
-    'Code ka Magician ✨',
-    'Bug Crusher 🚀',
-    'code with repswal 📚',
-    'Tech Community Builder 👥'
+    'Frontend Engineer',
+    'Full Stack Developer',
+    'Mobile App Developer',
+    'Community Builder',
+    'Tech Enthusiast'
   ];
   const typedEl = document.getElementById('typedText');
   let roleIndex = 0;
@@ -127,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let typingSpeed = 80;
 
   function typeEffect() {
+    if (!typedEl) return;
     const currentRole = roles[roleIndex];
 
     if (!isDeleting) {
@@ -179,21 +179,16 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       backToTop.classList.remove('show');
     }
+  });
 
-    // Active nav link highlight
-    let currentSection = '';
-    sections.forEach(sec => {
-      const top = sec.offsetTop - 100;
-      if (scrollY >= top) {
-        currentSection = sec.getAttribute('id');
-      }
-    });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + currentSection) {
-        link.classList.add('active');
-      }
-    });
+  // Active nav link highlight (multi-page)
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    const href = link.getAttribute('href');
+    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
   });
 
   backToTop.addEventListener('click', () => {
@@ -365,54 +360,56 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
 
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending... ⏳';
-    submitBtn.disabled = true;
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending... ⏳';
+      submitBtn.disabled = true;
 
-    try {
-      const templateParams = {
-        name: document.getElementById('contactName').value,
-        email: document.getElementById('contactEmailInput').value,
-        subject: document.getElementById('contactSubject').value,
-        message: document.getElementById('contactMessage').value,
-      };
+      try {
+        const templateParams = {
+          name: document.getElementById('contactName').value,
+          email: document.getElementById('contactEmailInput').value,
+          subject: document.getElementById('contactSubject').value,
+          message: document.getElementById('contactMessage').value,
+        };
 
-      // 1. Send via EmailJS (Optional, but keeping since it was there)
-      await emailjs.send('service_q1slzbu', 'template_v31nwfe', templateParams);
+        // 1. Send via EmailJS (Optional, but keeping since it was there)
+        await emailjs.send('service_q1slzbu', 'template_v31nwfe', templateParams);
 
-      // 2. Save to Firestore for Admin Panel
-      if (typeof db !== 'undefined') {
-        await db.collection('messages').add({
-          ...templateParams,
-          status: 'New',
-          createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        });
+        // 2. Save to Firestore for Admin Panel
+        if (typeof db !== 'undefined') {
+          await db.collection('messages').add({
+            ...templateParams,
+            status: 'New',
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          });
+        }
+
+        formSuccess.textContent = '✅ Message sent! Main jald hi reply karunga. 🙏';
+        formSuccess.style.color = '';
+        formSuccess.classList.add('show');
+        submitBtn.textContent = 'Sent! ✅';
+        contactForm.reset();
+      } catch (error) {
+        console.error("Error submitting form: ", error);
+        formSuccess.textContent = '❌ Kuch gadbad ho gayi. Please try again!';
+        formSuccess.style.color = '#ff6b6b';
+        formSuccess.classList.add('show');
+        submitBtn.textContent = 'Try Again 🔄';
       }
 
-      formSuccess.textContent = '✅ Message sent! Main jald hi reply karunga. 🙏';
-      formSuccess.style.color = '';
-      formSuccess.classList.add('show');
-      submitBtn.textContent = 'Sent! ✅';
-      contactForm.reset();
-    } catch (error) {
-      console.error("Error submitting form: ", error);
-      formSuccess.textContent = '❌ Kuch gadbad ho gayi. Please try again!';
-      formSuccess.style.color = '#ff6b6b';
-      formSuccess.classList.add('show');
-      submitBtn.textContent = 'Try Again 🔄';
-    }
-
-    setTimeout(() => {
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-      formSuccess.classList.remove('show');
-      formSuccess.style.color = '';
-    }, 5000);
-  });
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        formSuccess.classList.remove('show');
+        formSuccess.style.color = '';
+      }, 5000);
+    });
+  }
 
 
   /* ─────────────────────────────────────────

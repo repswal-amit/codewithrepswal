@@ -25,6 +25,54 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
   <!-- Firebase Firestore -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://codewithrepswal.onrender.com/#person",
+        "name": "Amit Repswal",
+        "alternateName": ["code with repswal", "Amit Repswal coder"],
+        "jobTitle": "Web & App Developer, Content Creator",
+        "description": "Amit Repswal is the owner, founder, creator, and author of Code With Repswal.",
+        "url": "https://codewithrepswal.onrender.com/",
+        "sameAs": [
+          "https://www.instagram.com/codewithrepswal",
+          "https://t.me/codewithrepswal",
+          "https://t.me/computer_science_students_A"
+        ],
+        "brand": {
+          "@id": "https://codewithrepswal.onrender.com/#brand"
+        }
+      },
+      {
+        "@type": "Brand",
+        "@id": "https://codewithrepswal.onrender.com/#brand",
+        "name": "Code With Repswal",
+        "alternateName": "codewithrepswal",
+        "slogan": "Building dreams, crushing bugs",
+        "founder": {
+          "@id": "https://codewithrepswal.onrender.com/#person"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://codewithrepswal.onrender.com/#website",
+        "url": "https://codewithrepswal.onrender.com/",
+        "name": "Code With Repswal",
+        "description": "Official website of Code With Repswal, a community and portfolio owned and created by Amit Repswal.",
+        "author": {
+          "@id": "https://codewithrepswal.onrender.com/#person"
+        },
+        "publisher": {
+          "@id": "https://codewithrepswal.onrender.com/#person"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
