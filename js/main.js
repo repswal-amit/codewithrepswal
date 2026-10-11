@@ -461,6 +461,8 @@ document.addEventListener('DOMContentLoaded', () => {
           if(data.telegram && document.getElementById('telegramIcon')) document.getElementById('telegramIcon').href = data.telegram;
           if(data.telegram && document.getElementById('tgJoinBtn')) document.getElementById('tgJoinBtn').href = data.telegram;
         }
+      }).catch(err => {
+        console.warn("Could not load dynamic profile settings:", err);
       });
     }
 
@@ -592,6 +594,8 @@ document.addEventListener('DOMContentLoaded', () => {
             showSiteToast(data.message, data.type || 'success');
           }
         });
+      }, err => {
+        console.warn("Realtime notifications listener:", err);
       });
     }
 
